@@ -10,8 +10,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.18.0",
-  "dependencies": {
-    "prettier": "^3.7.2"
-  }
+  "packageManager": "pnpm@10.18.0"
 }

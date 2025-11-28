@@ -1,4 +1,11 @@
+class fetchify {
+  constructor(config) {
+    this.config = config;
+  }
+}
+
 function create(config) {
+  return new fetchify(config);
   throw new Error("Not implemented");
 }
 

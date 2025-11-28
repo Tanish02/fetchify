@@ -1,4 +1,11 @@
 class fetchify {
+    config = {
+        Headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+
+
   constructor(config) {
     this.config = config;
   }
@@ -6,7 +13,7 @@ class fetchify {
 
 function create(config) {
   return new fetchify(config);
-  throw new Error("Not implemented");
+  // throw new Error("Not implemented");
 }
 
 export default {

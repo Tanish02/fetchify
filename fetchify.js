@@ -1,13 +1,16 @@
 class fetchify {
-    config = {
-        Headers: {
-            'Content-Type': 'application/json',
-        },
-    };
-
+  config = {
+    Headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
   constructor(config) {
     this.config = config;
+  }
+
+  async get(url) {
+    return fetch("${this.config.baseURL}${url}");
   }
 }
 

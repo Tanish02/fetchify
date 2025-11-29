@@ -1,15 +1,19 @@
 class fetchify {
   config = {
-    Headers: {
+    headers: {
       "Content-Type": "application/json",
     },
   };
 
   constructor(config) {
     this.config = this.mergeConfig(config);
+    // console.log("config:", config);
   }
 
-  async get(url) {
+  async get(url, config) {
+    // console.log("config:", this.config, config);
+    const finalConfig = this.mergeConfig(config);
+    console.log("final:", finalConfig);
     return fetch("${this.config.baseURL}${url}");
   }
 

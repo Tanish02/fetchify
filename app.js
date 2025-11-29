@@ -10,7 +10,7 @@ const api = fetchify.create({
 async function main() {
   const response = await api.get("/todos", {
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/xml",
     },
   });
   const data = await response.json();

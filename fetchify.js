@@ -6,11 +6,18 @@ class fetchify {
   };
 
   constructor(config) {
-    this.config = config;
+    this.config = this.mergeConfig(config);
   }
 
   async get(url) {
     return fetch("${this.config.baseURL}${url}");
+  }
+
+  mergeConfig(config) {
+    return {
+      ...this.config,
+      ...config,
+    };
   }
 }
 

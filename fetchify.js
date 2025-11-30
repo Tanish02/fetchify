@@ -1,5 +1,6 @@
 class fetchify {
   config = {
+    timeout: 1000,
     headers: {
       "Content-Type": "application/json",
     },
@@ -10,11 +11,24 @@ class fetchify {
     // console.log("config:", config);
   }
 
-  async get(url, config) {
+  dispatchRequest({ url, config }) {
     // console.log("config:", this.config, config);
     const finalConfig = this.mergeConfig(config);
     // console.log("final:", finalConfig);
     return fetch(`${this.config.baseURL}${url}`, finalConfig);
+  }
+
+  async get(url, config) {
+    return this.dispatchRequest({
+      url,
+      config: { ...config, method: "GET" },
+    });
+  }
+  async post(url, data, config) {
+    return this.dispatchRequest({
+      url,
+      config: { ...config, method: "POST" },
+    });
   }
 
   mergeConfig(config) {

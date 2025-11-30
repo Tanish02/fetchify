@@ -4,4 +4,4 @@
 # todos
 
 [v] config merging
-[x] Timeout setup
+[v] Timeout setup

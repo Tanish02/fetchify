@@ -3,12 +3,12 @@ import fetchify from "./fetchify.js";
 // public API
 const api = fetchify.create({
   baseURL: "http://localhost:3000",
-  timeout: 10,
+  timeout: 1000,
   headers: { "Content-Type": "application/json", "x-api-key": "key" },
 });
 
 async function main() {
-  const response = await api.get("/todos");
+  const response = await api.get("/todos", { timeout: 500 });
   const data = await response.json();
   console.log(data);
 }

@@ -11,20 +11,28 @@ class fetchify {
     // console.log("config:", config);
   }
 
-  dispatchRequest({ url, config }) {
+  async dispatchRequest({ url, config }) {
+    const finalConfig = this.mergeConfig(config);
+    console.log("final:", finalConfig);
     const abortController = new AbortController();
-    const timeout = this.config.timeout || 0;
+    const timeout = finalConfig.timeout || 0;
+
+    let timeoutId;
     if (timeout) {
-      setTimeout(() => abortController.abort(), timeout);
+      console.log("timeout:", timeout);
+      timeoutId = setTimeout(() => abortController.abort(), timeout);
     }
 
-    // console.log("config:", this.config, config);
-    const finalConfig = this.mergeConfig(config);
     // console.log("final:", finalConfig);
-    return fetch(`${this.config.baseURL}${url}`, {
-      ...finalConfig,
-      signal: abortController.signal,
-    });
+    try {
+      const response = await fetch(`${this.config.baseURL}${url}`, {
+        ...finalConfig,
+        signal: abortController.signal,
+      });
+      return response;
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
+    }
   }
 
   async get(url, config) {

@@ -5,3 +5,4 @@
 
 [v] config merging
 [v] Timeout setup
+[x] interceptors

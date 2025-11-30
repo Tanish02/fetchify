@@ -1,7 +1,17 @@
 {
   "todos": [
-    { "id": "1", "title": "Learn Next.js", "completed": false, "userId": 1 },
-    { "id": "2", "title": "Build a project", "completed": false, "userId": 1 },
+    {
+      "id": "1",
+      "title": "Learn Next.js",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": "2",
+      "title": "Build a project",
+      "completed": false,
+      "userId": 1
+    },
     {
       "id": "3",
       "title": "Deploy to production",

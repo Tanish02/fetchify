@@ -8,12 +8,7 @@ const api = fetchify.create({
 });
 
 async function main() {
-  const response = await api.get("/todos", {
-    headers: {
-      "Content-Type": "application/xml",
-      "x-idempontency-key": "fdsjnckjsnc",
-    },
-  });
+  const response = await api.get("/todos");
   const data = await response.json();
   console.log(data);
 }

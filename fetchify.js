@@ -13,7 +13,7 @@ class fetchify {
   async get(url, config) {
     // console.log("config:", this.config, config);
     const finalConfig = this.mergeConfig(config);
-    console.log("final:", finalConfig);
+    // console.log("final:", finalConfig);
     return fetch(`${this.config.baseURL}${url}`, finalConfig);
   }
 
@@ -23,7 +23,7 @@ class fetchify {
       ...config,
       headers: {
         ...(this.config.headers || {}),
-        ...(config.headers || {}),
+        ...(config?.headers || {}),
       },
     };
   }

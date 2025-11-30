@@ -5,10 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve:db": "json-server --watch db.json --port 3000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.18.0"
+  "packageManager": "pnpm@10.18.0",
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
 }

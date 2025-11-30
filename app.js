@@ -2,7 +2,7 @@ import fetchify from "./fetchify.js";
 
 // public API
 const api = fetchify.create({
-  baseURL: "https://localhost:3000",
+  baseURL: "http://localhost:3000",
   timeout: 1000,
   headers: { "Content-Type": "application/json", "x-api-key": "key" },
 });

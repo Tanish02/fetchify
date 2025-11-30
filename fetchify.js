@@ -12,10 +12,19 @@ class fetchify {
   }
 
   dispatchRequest({ url, config }) {
+    const abortController = new AbortController();
+    const timeout = this.config.timeout || 0;
+    if (timeout) {
+      setTimeout(() => abortController.abort(), timeout);
+    }
+
     // console.log("config:", this.config, config);
     const finalConfig = this.mergeConfig(config);
     // console.log("final:", finalConfig);
-    return fetch(`${this.config.baseURL}${url}`, finalConfig);
+    return fetch(`${this.config.baseURL}${url}`, {
+      ...finalConfig,
+      signal: abortController.signal,
+    });
   }
 
   async get(url, config) {

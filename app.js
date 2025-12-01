@@ -19,7 +19,7 @@ api.addRequestInterceptors(
 
 api.addResponseInterceptors(
   function (response) {
-    console.log("Response received...", response.sataus);
+    console.log("Response received...", response.status);
     return response;
   },
   function (err) {
@@ -28,9 +28,10 @@ api.addResponseInterceptors(
 );
 
 async function main() {
-  const response = await api.get("/todos", { timeout: 500 });
+  const response = await api.get("/todos", { token: "" });
   const data = await response.json();
-  console.log(data);
+  console.log("response:", response);
+  console.log("data:", data);
 }
 
 main();

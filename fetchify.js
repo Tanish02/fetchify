@@ -55,16 +55,16 @@ class fetchify {
   // dispatch interceptor
   async dispatchRequest({ url, config }) {
     const finalConfig = this.mergeConfig(config);
-    console.log("final:", finalConfig);
+    // console.log("final:", finalConfig);
     const abortController = new AbortController();
     const timeout = finalConfig.timeout || 0;
 
     let timeoutId;
     if (timeout) {
-      console.log("timeout:", timeout);
+      // console.log("timeout:", timeout);
       timeoutId = setTimeout(() => abortController.abort(), timeout);
     }
-    console.log("conf:", this.config, "url:", url);
+    // console.log("conf:", this.config, url);
 
     // console.log("final:", finalConfig);
     try {

@@ -6,5 +6,5 @@
 
 [v] config merging
 [v] Timeout setup
-[x] interceptors
-[x]
+[v] interceptors
+[x] add put/post request

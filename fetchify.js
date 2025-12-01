@@ -25,12 +25,12 @@ class fetchify {
       ...this.responseInterceptors,
     ];
 
-    let promise = promise.resolve({
+    let promise = Promise.resolve({
       url,
       config: finalConfig,
     });
     for (const { successFn, failFn } of chain) {
-      promise.then(
+      promise = promise.then(
         (res) => {
           try {
             return successFn(res);
@@ -49,6 +49,7 @@ class fetchify {
         }
       );
     }
+    return promise;
   }
 
   // dispatch interceptor
@@ -66,7 +67,7 @@ class fetchify {
 
     // console.log("final:", finalConfig);
     try {
-      const response = await fetch(`${this.config.baseURL}${url}`, {
+      const response = await fetch(`${this.config.baseURL}${url.url}`, {
         ...finalConfig,
         signal: abortController.signal,
       });
@@ -77,10 +78,14 @@ class fetchify {
   }
 
   async get(url, config) {
-    return this.dispatchRequest({
+    return this.request({
       url,
       config: { ...config, method: "GET" },
     });
+    // return this.dispatchRequest({
+    //   url,
+    //   config: { ...config, method: "GET" },
+    // });
   }
   async post(url, data, config) {
     return this.dispatchRequest({

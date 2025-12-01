@@ -9,7 +9,7 @@ const api = fetchify.create({
 
 api.addRequestInterceptors(
   function (config) {
-    console.log("INtercepting the Request...", config);
+    console.log("Intercepting the Request...", config);
     return config;
   },
   function (err) {

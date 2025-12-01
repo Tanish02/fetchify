@@ -19,16 +19,31 @@ class fetchify {
   async request(url, config) {
     const finalConfig = this.mergeConfig(config);
 
-    let promise = promise.resolve({
-      url,
-      config: finalConfig,
-    });
-
     const chain = [
       ...this.requestInterceptors,
       { successFn: this.dispatchRequest.bind(this) },
       ...this.responseInterceptors,
     ];
+
+    let promise = promise.resolve({
+      url,
+      config: finalConfig,
+    });
+    for (const { successFn, failFn } of chain) {
+      promise.then(
+        (res) => {
+          try {
+            return successFn(res);
+          } catch (err) {
+            if (failFn) {
+              return failFn(err);
+            }
+            return Promise.reject(err);
+          }
+        },
+        (err) => {}
+      );
+    }
   }
 
   // dispatch interceptor

@@ -41,7 +41,12 @@ class fetchify {
             return Promise.reject(err);
           }
         },
-        (err) => {}
+        (err) => {
+          if (failFn) {
+            return failFn(err);
+          }
+          return Promise.reject(err);
+        }
       );
     }
   }

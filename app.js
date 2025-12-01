@@ -7,7 +7,7 @@ const api = fetchify.create({
   headers: { "Content-Type": "application/json", "x-api-key": "key" },
 });
 
-api.addRequestInterceptor(
+api.addRequestInterceptors(
   function (config) {
     console.log("INtercepting the Request...", config);
     return config;

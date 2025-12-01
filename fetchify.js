@@ -6,11 +6,25 @@ class fetchify {
     },
   };
 
+  // interceptor chains start with config
   constructor(config) {
     this.config = this.mergeConfig(config);
     // console.log("config:", config);
   }
 
+  // request interceptor
+  async request(url, config) {
+    const finalConfig = this.mergeConfig(config);
+
+    let promise = promise.resolve({
+      url,
+      config: finalConfig,
+    });
+
+    const chain = [];
+  }
+
+  // dispatch interceptor
   async dispatchRequest({ url, config }) {
     const finalConfig = this.mergeConfig(config);
     console.log("final:", finalConfig);
@@ -58,6 +72,9 @@ class fetchify {
       },
     };
   }
+
+
+  addRequestInterceptor(successFn, failFn)
 }
 
 function create(config) {
@@ -68,3 +85,7 @@ function create(config) {
 export default {
   create,
 };
+
+// end code
+
+// Interceptor logic ->  start > request interceptor > dispatchRequest > response interceptor -> end

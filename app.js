@@ -7,6 +7,15 @@ const api = fetchify.create({
   headers: { "Content-Type": "application/json", "x-api-key": "key" },
 });
 
+api.addRequestInterceptor(
+  function (config) {
+    return config;
+  },
+  function (err) {
+    return Promise.reject(err);
+  }
+);
+
 async function main() {
   const response = await api.get("/todos", { timeout: 500 });
   const data = await response.json();

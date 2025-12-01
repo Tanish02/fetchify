@@ -64,6 +64,7 @@ class fetchify {
       console.log("timeout:", timeout);
       timeoutId = setTimeout(() => abortController.abort(), timeout);
     }
+    console.log("conf:", this.config, "url:", url);
 
     // console.log("final:", finalConfig);
     try {
@@ -71,6 +72,8 @@ class fetchify {
         ...finalConfig,
         signal: abortController.signal,
       });
+      // console.log("respon:", response);
+
       return response;
     } finally {
       if (timeoutId) clearTimeout(timeoutId);

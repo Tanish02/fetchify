@@ -7,6 +7,7 @@ class fetchify {
   };
 
   requestInterceptors = [];
+  responseInterceptors = [];
 
   // interceptor chains start with config
   constructor(config) {

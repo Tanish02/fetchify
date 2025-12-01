@@ -23,7 +23,10 @@ class fetchify {
       config: finalConfig,
     });
 
-    const chain = [];
+    const chain = [
+      ...this.requestInterceptors,
+      { successFn: this.dispatchRequest.bind(this) },
+    ];
   }
 
   // dispatch interceptor

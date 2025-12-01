@@ -6,6 +6,8 @@ class fetchify {
     },
   };
 
+  requestInterceptors = [];
+
   // interceptor chains start with config
   constructor(config) {
     this.config = this.mergeConfig(config);
@@ -73,8 +75,9 @@ class fetchify {
     };
   }
 
-
-  addRequestInterceptor(successFn, failFn)
+  addRequestInterceptor(successFn, failFn) {
+    this.requestInterceptors.push({ successFn, failFn });
+  }
 }
 
 function create(config) {

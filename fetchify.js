@@ -27,6 +27,7 @@ class fetchify {
     const chain = [
       ...this.requestInterceptors,
       { successFn: this.dispatchRequest.bind(this) },
+      ...this.responseInterceptors,
     ];
   }
 
@@ -79,8 +80,12 @@ class fetchify {
     };
   }
 
-  addRequestInterceptor(successFn, failFn) {
+  addRequestInterceptors(successFn, failFn) {
     this.requestInterceptors.push({ successFn, failFn });
+  }
+
+  addResponseInterceptors(successFn, failFn) {
+    this.responseInterceptors.push({ successFn, failFn });
   }
 }
 

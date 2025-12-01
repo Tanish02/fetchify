@@ -9,7 +9,18 @@ const api = fetchify.create({
 
 api.addRequestInterceptor(
   function (config) {
+    console.log("INtercepting the Request...", config);
     return config;
+  },
+  function (err) {
+    return Promise.reject(err);
+  }
+);
+
+api.addResponseInterceptors(
+  function (response) {
+    console.log("Response received...", response.sataus);
+    return response;
   },
   function (err) {
     return Promise.reject(err);
